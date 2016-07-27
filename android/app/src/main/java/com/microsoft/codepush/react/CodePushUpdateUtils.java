@@ -112,7 +112,10 @@ public class CodePushUpdateUtils {
         }
     }
 
-    public static void verifyHashForDiffUpdate(String folderPath, String expectedHash) {
+    // Hashing algorithm:
+    // 1. Recursively generate a sorted JSON list of format <relativeFilePath>: <sha256FileHash>
+    // 2. SHA256-hash the list
+    public static void verifyFolderSignature(String folderPath, String expectedHash) {
         ArrayList<String> updateContentsManifest = new ArrayList<>();
         addContentsOfFolderToManifest(folderPath, "", updateContentsManifest);
         Collections.sort(updateContentsManifest);

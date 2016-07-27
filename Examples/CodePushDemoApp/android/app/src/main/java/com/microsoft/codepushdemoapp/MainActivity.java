@@ -41,7 +41,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
                 new MainReactPackage(),
-                new CodePush("deployment-key-here", this, BuildConfig.DEBUG)
+                new CodePush("e582e53f-1e86-4cf8-a42c-7c4e6ca62e66", this, BuildConfig.DEBUG)
         );
     }
 }

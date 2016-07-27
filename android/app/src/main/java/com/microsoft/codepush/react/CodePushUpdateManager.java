@@ -249,7 +249,7 @@ public class CodePushUpdateManager {
                 }
 
                 if (isDiffUpdate) {
-                    CodePushUpdateUtils.verifyHashForDiffUpdate(newUpdateFolderPath, newUpdateHash);
+                    CodePushUpdateUtils.verifyFolderSignature(newUpdateFolderPath, newUpdateHash);
                 }
 
                 JSONObject updatePackageJSON = CodePushUtils.convertReadableToJsonObject(updatePackage);

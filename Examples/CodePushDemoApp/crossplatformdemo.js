@@ -120,7 +120,7 @@ let CodePushDemoApp = React.createClass({
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to CodePush!
+          Welcome to CodePush v2!
         </Text>
         {syncButton}
         {syncView}
