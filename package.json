@@ -17,7 +17,8 @@
     "url": "https://github.com/Microsoft/react-native-code-push"
   },
   "dependencies": {
-    "code-push": "1.8.0-beta"
+    "code-push": "1.8.0-beta",
+    "tslint": "^3.13.0"
   },
   "devDependencies": {
     "archiver": "latest",
@@ -33,16 +34,20 @@
     "run-sequence": "latest"
   },
   "rnpm": {
-      "android": {
-          "packageInstance": "new CodePush(${androidDeploymentKey}, this, BuildConfig.DEBUG)"
-      },
-      "ios": {
-        "sharedLibraries": ["libz"]
-      },
-      "params": [{
+    "android": {
+      "packageInstance": "new CodePush(${androidDeploymentKey}, this, BuildConfig.DEBUG)"
+    },
+    "ios": {
+      "sharedLibraries": [
+        "libz"
+      ]
+    },
+    "params": [
+      {
         "type": "input",
         "name": "androidDeploymentKey",
         "message": "What is your CodePush deployment key for Android (hit <ENTER> to ignore)"
-      }]
+      }
+    ]
   }
 }
