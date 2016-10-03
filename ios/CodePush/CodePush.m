@@ -441,10 +441,14 @@ static NSString *bundleResourceSubdirectory = nil;
         // is debugging and therefore, shouldn't be redirected to a local
         // file (since Chrome wouldn't support it). Otherwise, update
         // the current bundle URL to point at the latest update
+        
+        CPLog(@"Loading bundle");
         if ([CodePush isUsingTestConfiguration] || ![_bridge.bundleURL.scheme hasPrefix:@"http"]) {
+            CPLog(@"Changing bundleURL");
             [_bridge setValue:[CodePush bundleURL] forKey:@"bundleURL"];
         }
-
+        
+        CPLog(@"Reloading bridge");
         [_bridge reload];
     });
 }
@@ -814,7 +818,9 @@ RCT_EXPORT_METHOD(restartApp:(BOOL)onlyIfUpdateIsPending
 {
     // If this is an unconditional restart request, or there
     // is current pending update, then reload the app.
+    CPLog(@"Starting restart");
     if (!onlyIfUpdateIsPending || [[self class] isPendingUpdate:nil]) {
+        CPLog(@"Executing restart");
         [self loadBundle];
         resolve(@(YES));
         return;
