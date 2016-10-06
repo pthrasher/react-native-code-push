@@ -113,8 +113,8 @@ public class CodePushNativeModule extends ReactContextBaseJavaModule {
                 // RN >= v0.30
                 Field bundleLoaderField = instanceManager.getClass().getDeclaredField("mBundleLoader");
                 Class<?> jsBundleLoaderClass = Class.forName("com.facebook.react.cxxbridge.JSBundleLoader");
-                Method createFileLoaderMethod = jsBundleLoaderClass.getDeclaredMethod("createFileLoader", Context.class, String.class);
-                Object latestJSBundleLoader = createFileLoaderMethod.invoke(jsBundleLoaderClass, getReactApplicationContext(), latestJSBundleFile);
+                Method createFileLoaderMethod = jsBundleLoaderClass.getDeclaredMethod("createFileLoader", String.class);
+                Object latestJSBundleLoader = createFileLoaderMethod.invoke(jsBundleLoaderClass, latestJSBundleFile);
                 bundleLoaderField.setAccessible(true);
                 bundleLoaderField.set(instanceManager, latestJSBundleLoader);
             } catch (Exception e) {
